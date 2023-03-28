@@ -46,8 +46,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const backgroundAudio = new Audio('../assets/audio/background_audio.mp3');
-    backgroundAudio.loop = true;
-    backgroundAudio.play();
+    const backgroundSound = new Audio('../assets/audio/background_audio.mp3');
+    backgroundSound.loop = true;
+    setTimeout(() => {
+      backgroundSound.play();
+    }, 1000);
   }
 }
