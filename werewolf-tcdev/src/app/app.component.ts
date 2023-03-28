@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
-import { Howl } from 'howler';
 import { StateService } from 'src/shared/service/state.service';
 
 @Component({
@@ -9,10 +8,7 @@ import { StateService } from 'src/shared/service/state.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  sound = new Howl({
-    src: ['../assets/audio/background_audio.mp3'],
-    loop: true,
-  });
+  backgroundAudio = new Audio('../assets/audio/background_audio.mp3');
   title = 'werewolf-one-night-tcdev';
   constructor(private router: Router, private state: StateService) {
     router.events.subscribe((event) => {
@@ -49,7 +45,9 @@ export class AppComponent implements OnInit {
       }
     });
   }
-  ngOnInit() {
-    // this.sound.play();
+
+  ngOnInit(): void {
+    this.backgroundAudio.loop = true;
+    this.backgroundAudio.play();
   }
 }

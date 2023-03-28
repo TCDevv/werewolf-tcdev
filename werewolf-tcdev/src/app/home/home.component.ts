@@ -12,6 +12,7 @@ import { StateService } from 'src/shared/service/state.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
+  wolfHowlAudio = new Audio('../../assets/audio/wolf-howling.mp3');
   @ViewChild('myinput') myInput: ElementRef;
   step: 1 | 2 = 1;
   numberOfParticipant: number = 3;
@@ -125,6 +126,10 @@ export class HomeComponent {
       (i) => i.id === 1 || i.id === 2
     );
     if (hasWolf !== -1) {
+      this.wolfHowlAudio.play();
+      setTimeout(() => {
+        this.wolfHowlAudio.pause();
+      }, 5000);
       this.randomCharacter();
       this.router.navigate(['/select-random']);
     } else {

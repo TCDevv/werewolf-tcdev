@@ -9,7 +9,12 @@ import { HomeComponent } from './home/home.component';
 import { SelectRandomComponent } from './select-random/select-random.component';
 
 @NgModule({
-  declarations: [AppComponent, CharacterComponent, HomeComponent, SelectRandomComponent],
+  declarations: [
+    AppComponent,
+    CharacterComponent,
+    HomeComponent,
+    SelectRandomComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
