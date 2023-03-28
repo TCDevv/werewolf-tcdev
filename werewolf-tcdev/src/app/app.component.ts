@@ -8,7 +8,6 @@ import { StateService } from 'src/shared/service/state.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  backgroundAudio = new Audio('../assets/audio/background_audio.mp3');
   title = 'werewolf-one-night-tcdev';
   constructor(private router: Router, private state: StateService) {
     router.events.subscribe((event) => {
@@ -47,7 +46,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.backgroundAudio.loop = true;
-    this.backgroundAudio.play();
+    const backgroundAudio = new Audio('../assets/audio/background_audio.mp3');
+    backgroundAudio.loop = true;
+    backgroundAudio.play();
   }
 }

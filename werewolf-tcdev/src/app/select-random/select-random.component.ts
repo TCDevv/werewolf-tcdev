@@ -15,7 +15,6 @@ export class SelectRandomComponent implements OnInit {
     private role: RoleService
   ) {}
   ngOnInit(): void {
-    console.log(this.state.listCharacter);
     if (
       this.state.listSelectRole.length === 0 ||
       this.state.listParticipant.length === 0
