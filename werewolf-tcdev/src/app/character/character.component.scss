@@ -1,0 +1,68 @@
+.back {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    & > i {
+        font-size: 1.2rem;
+        color: rgb(226, 59, 115);
+        font-weight: bold;
+        cursor: pointer;
+    }
+    & > i:hover {
+        color: palevioletred;
+    }
+}
+.title {
+    margin-top: 20px;
+    h1 {
+        color: rgb(226, 59, 115);
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+}
+.character-container {
+    height: 85%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    &__image {
+        height: 70%;
+        & > img {
+            height: 100%;
+            border-radius: 50%;
+            scale: 0;
+            animation: zoomIn 5s 1s alternate 1;
+        }
+    }
+    &__name {
+        height: 4rem;
+        color: rgb(226, 59, 115);
+        font-size: bold;
+        text-align: center;
+        & > h1 {
+            font-size: 1rem;
+        }
+        & > span {
+            font-size: 1.2rem;
+            font-weight: bold;
+            scale: 0;
+            animation: zoomIn 6s alternate 1;
+        }
+    }
+    @keyframes zoomIn {
+        from {
+            scale: 0;
+            opacity: 0;
+        }
+        to {
+            scale: 1;
+            opacity: 1;
+        }
+    }
+}
+
+.scaled {
+    scale: 1 !important;
+}

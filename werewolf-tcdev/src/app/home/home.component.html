@@ -1,0 +1,59 @@
+<div class="col col-md-6 col-xs-10 container"
+    [ngClass]="{'jump-in-from-left':state.navigateType === 'randomToHome','jump-in-from-right':state.navigateType === 'default'}">
+    <div class="step">
+        <div class="step__select-participant" (click)="step=1">Chọn người chơi</div>
+        <div class="step__select-role" [class.step-disabled]="myForm.invalid" (click)="step=2;">
+            Chọn vai trò</div>
+    </div>
+    <div class="title">
+        <h1>MA SÓI</h1>
+    </div>
+    <div class="select-container">
+        <div class="select-container__participant" [ngClass]="{'hidden-to-left':step===2,'appear':step===1}">
+            <div class="selection">
+                <div class="form-group">
+                    <div class="form-label">Số người chơi:</div>
+                    <input type="number" min="3" max="15" [(ngModel)]="numberOfParticipant"
+                        (input)="onNumberOfParticipantChanged($event)">
+                    <span>Số người chơi từ 3 đến 15</span>
+                </div>
+                <div class="selection__input-name-container">
+                    <form action="" #myForm="ngForm">
+                        <div class="form-group" *ngFor="let data of state.listParticipant; index as i">
+                            <div class="form-label"><i class="fa fa-user-circle" aria-hidden="true"></i> {{i+1}}</div>
+                            <input type="text" maxlength="20" [(ngModel)]="data.name" ngModel name="username{{i}}"
+                                required>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="select-container__role" [ngClass]="{'hidden-to-right':step===1,'appear':step===2}">
+            <div class="pick-role">
+                <div class="pick-role__header">
+                    Chọn vai trò: <span>Vui lòng chọn và nhập đủ số lượng vai trò 😍</span>
+                </div>
+                <div class="pick-role__role-list">
+                    <div class="pick-role__role-list__role" *ngFor="let role of listRole$ | async">
+                        <img src="{{role.img}}" [class.selected]="role.selected" alt="" (click)="onSelectRole(role)">
+                        <span>{{role.name}}</span>
+                        <input #myinput [disabled]="!role.selected" type="number" value="{{role.quantity}}" min="0"
+                            (change)="onInputRoleChanged($event,role)" max="{{role.max}}">
+                    </div>
+                </div>
+                <div class="pick-role__quantity"
+                    [class.enougt-or-redundency]="state.listSelectRole.length >= state.listParticipant.length">
+                    Đã chọn {{state.listSelectRole.length === state.listParticipant.length ? 'đủ' :
+                    state.listSelectRole.length}} vai trò
+                    cho {{state.listParticipant.length}} người chơi
+                </div>
+            </div>
+            <div class="action">
+                <button class="btn btn-success"
+                    [disabled]="!(state.listSelectRole.length === state.listParticipant.length)" type="button"
+                    (click)="startGame()">Bắt đầu</button>
+                <div class="error-mess">{{errorMessage || ""}}</div>
+            </div>
+        </div>
+    </div>
+</div>

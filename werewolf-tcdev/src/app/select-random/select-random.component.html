@@ -1,0 +1,18 @@
+<div class="container"
+    [ngClass]="{'jump-in-from-left':state.navigateType === 'characterToRandom','jump-in-from-right':state.navigateType === 'homeToRandom'}">
+    <div class="title">
+        <h1>MA SÓI</h1>
+    </div>
+    <div class="select-random-role">
+        <div class="header">Chọn thẻ bài của bạn:</div>
+        <div class="card-container">
+            <div class="card" [class.disabled-card]="card.selected" *ngFor="let card of state.listCharacter"
+                routerLink="/character/{{card.id}}">
+                <div>{{card.name}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="action">
+        <button class="btn btn-success" type="button" (click)="endGame()">Kết thúc</button>
+    </div>
+</div>

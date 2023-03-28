@@ -1,0 +1,278 @@
+.step {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1rem;
+    &__select-participant {
+        background-color: rgb(226, 59, 115);
+        width: 50%;
+        height: 100%;
+        border-top-left-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+    }
+    &__select-participant:hover {
+        background-color: palevioletred;
+    }
+    &__select-role {
+        background-color: rgb(29, 163, 247);
+        width: 50%;
+        height: 100%;
+        border-top-right-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+    }
+    &__select-role:hover {
+        background-color: lightskyblue;
+    }
+    &-disabled {
+        background-color: #ccc;
+        pointer-events: none;
+    }
+}
+.title {
+    margin-top: 20px;
+    h1 {
+        color: rgb(226, 59, 115);
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+}
+.select-container {
+    display: flex;
+    height: 90%;
+    position: relative;
+    width: 100%;
+    &__participant {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        height: 100%;
+        transition: 0.5s ease;
+        .selection {
+            width: 80%;
+            height: 100%;
+            .form-group {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                width: 100%;
+                margin-bottom: 15px;
+                .form-label {
+                    font-size: 1rem;
+                    font-weight: bold;
+                    color: rgb(226, 59, 115);
+                    margin-bottom: 0;
+                    width: 350px;
+                }
+                input {
+                    width: 100px;
+                    font-size: 1rem;
+                    border: none;
+                    outline: none;
+                    background-color: #ccc;
+                    border-radius: 5px;
+                    text-align: center;
+                    height: 40px;
+                    font-weight: 600;
+                    color: #555;
+                }
+                span {
+                    color: rgb(226, 59, 115);
+                    font-size: 0.9rem;
+                }
+            }
+            &__input-name-container {
+                margin-top: 10px;
+                width: 100%;
+                height: 80%;
+                overflow-y: scroll;
+                scrollbar-width: thin;
+                scrollbar-color: rgb(226, 59, 115) #f5f5f5;
+                .form-group {
+                    width: 100%;
+                    .form-label {
+                        width: 50px;
+                    }
+                    input {
+                        width: 80%;
+                    }
+                }
+            }
+            &__input-name-container::-webkit-scrollbar {
+                width: 6px;
+            }
+            &__input-name-container::-webkit-scrollbar-thumb:hover {
+                background-color: rgb(219, 110, 146); /* Màu của thanh cuộn khi được hover */
+            }
+            &__input-name-container::-webkit-scrollbar-thumb {
+                background-color: rgb(226, 59, 115); /* Màu của thanh cuộn khi không hover */
+            }
+            @media screen and (max-width: 480px) {
+                &__input-name-container::-webkit-scrollbar {
+                    width: 0;
+                }
+            }
+        }
+    }
+    &__role {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        height: 90%;
+        transition: 0.5s ease;
+        gap: 20px;
+        font-size: 0.9em;
+        .pick-role {
+            width: 80%;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            &__header {
+                color: rgb(226, 59, 115);
+                font-size: 1rem;
+                font-weight: bold;
+                & > span {
+                    font-weight: 400;
+                    font-size: 0.9rem;
+                }
+            }
+            &__role-list {
+                width: 100%;
+                height: 70%;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px 5px;
+                margin: 10px 0;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                scrollbar-width: thin;
+                scrollbar-color: rgb(226, 59, 115) #f5f5f5;
+                &__role {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    & > img {
+                        width: 3rem;
+                        border-radius: 50%;
+                        cursor: pointer;
+                        filter: grayscale(100%);
+                        border: 2px solid rgb(226, 59, 115);
+                        transition: 0.15s ease-in-out;
+                    }
+                    & > span {
+                        font-weight: bold;
+                        color: #555;
+                        width: 120px;
+                    }
+                    & > input {
+                        width: 50px;
+                        font-size: 18px;
+                        border: none;
+                        outline: none;
+                        background-color: #ccc;
+                        border-radius: 5px;
+                        text-align: center;
+                        height: 40px;
+                        font-weight: 600;
+                        color: #555;
+                    }
+                }
+                @media screen and (max-width: 1270px) {
+                    &__role {
+                        justify-content: space-between;
+                    }
+                }
+            }
+            &__role-list::-webkit-scrollbar {
+                width: 6px;
+            }
+            &__role-list::-webkit-scrollbar-thumb:hover {
+                background-color: rgb(219, 110, 146); /* Màu của thanh cuộn khi được hover */
+            }
+            &__role-list::-webkit-scrollbar-thumb {
+                background-color: rgb(226, 59, 115); /* Màu của thanh cuộn khi không hover */
+            }
+            @media screen and (max-width: 480px) {
+                &__role-list::-webkit-scrollbar {
+                    width: 0;
+                }
+            }
+            &__quantity {
+                text-align: center;
+                width: 100%;
+                height: 40px;
+                font-size: 0.8rem;
+            }
+        }
+        .action {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+            button {
+                width: 50%;
+                height: 50px;
+                border-radius: 50px;
+                background-color: rgb(226, 59, 115);
+                border: none;
+                outline: none;
+                font-size: 1rem;
+            }
+            button:hover {
+                background-color: palevioletred;
+            }
+            .error-mess {
+                color: red;
+                height: 50px;
+            }
+        }
+    }
+}
+
+.hidden-to-left {
+    left: -150%;
+    opacity: 0;
+}
+
+.appear {
+    left: 0;
+    opacity: 1;
+}
+
+.hidden-to-right {
+    left: 150%;
+    opacity: 0;
+}
+
+.selected {
+    border: 5px solid lime !important;
+    scale: 1.1;
+    filter: none !important;
+}
+
+.enougt-or-redundency {
+    color: rgb(226, 59, 115);
+}
