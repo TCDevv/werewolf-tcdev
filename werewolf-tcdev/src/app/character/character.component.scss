@@ -33,7 +33,7 @@
             height: 100%;
             border-radius: 50%;
             scale: 0;
-            animation: zoomIn 5s 1s alternate 1;
+            animation: zoomIn 3s 1s alternate 1;
         }
     }
     @media screen and (max-width: 480px) {
@@ -58,7 +58,7 @@
             font-size: 1.2rem;
             font-weight: bold;
             scale: 0;
-            animation: zoomIn 6s alternate 1;
+            animation: zoomIn 4s alternate 1;
         }
     }
     @keyframes zoomIn {

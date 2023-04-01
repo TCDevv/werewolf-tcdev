@@ -13,16 +13,23 @@
             <div class="selection">
                 <div class="form-group">
                     <div class="form-label">Số người chơi:</div>
-                    <input type="number" min="3" max="15" [(ngModel)]="numberOfParticipant"
-                        (input)="onNumberOfParticipantChanged($event)">
-                    <span>Số người chơi từ 3 đến 15</span>
+                    <div class="input">
+                        <i class="fa fa-caret-up" aria-hidden="true" (click)="increaseNumber()"></i>
+                        <input type="number" min="5" max="15" [(ngModel)]="numberOfParticipant"
+                            (input)="onNumberOfParticipantChanged($event)">
+                        <i class="fa fa-caret-down" aria-hidden="true" (click)="decreaseNumber()"></i>
+                    </div>
+                    <span>Số người chơi từ 5 đến 15</span>
                 </div>
                 <div class="selection__input-name-container">
                     <form action="" #myForm="ngForm">
                         <div class="form-group" *ngFor="let data of state.listParticipant; index as i">
                             <div class="form-label"><i class="fa fa-user-circle" aria-hidden="true"></i> {{i+1}}</div>
-                            <input type="text" maxlength="20" [(ngModel)]="data.name" ngModel name="username{{i}}"
-                                required>
+                            <div class="input">
+                                <input type="text" maxlength="20" [(ngModel)]="data.name" ngModel name="username{{i}}"
+                                    required>
+                                <div class="clear-input" (click)="data.name = ''">&times;</div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -37,8 +44,15 @@
                     <div class="pick-role__role-list__role" *ngFor="let role of listRole$ | async">
                         <img src="{{role.img}}" [class.selected]="role.selected" alt="" (click)="onSelectRole(role)">
                         <span>{{role.name}}</span>
-                        <input #myinput [disabled]="!role.selected" type="number" value="{{role.quantity}}" min="0"
-                            (change)="onInputRoleChanged($event,role)" max="{{role.max}}">
+                        <div class="pick-role__role-list__role__input">
+                            <i class="fa fa-caret-up" aria-hidden="true" *ngIf="role.id === 2 || role.id === 7"
+                                (click)="increaseRole(role)" [class.cantClick]="!role.quantity"></i>
+                            <input id="role-{{role.id}}" [disabled]="!role.selected" type="number"
+                                value="{{role.quantity}}" min="0" *ngIf="role.id === 2 || role.id === 7"
+                                (change)="onInputRoleChanged($event,role)" max="{{role.max}}">
+                            <i class="fa fa-caret-down" aria-hidden="true" *ngIf="role.id === 2 || role.id === 7"
+                                (click)="decreaseRole(role)" [class.cantClick]="!role.quantity"></i>
+                        </div>
                     </div>
                 </div>
                 <div class="pick-role__quantity"

@@ -13,27 +13,28 @@ import { StateService } from 'src/shared/service/state.service';
 })
 export class HomeComponent {
   wolfHowlAudio = new Audio('../../assets/audio/wolf-howling.mp3');
-  @ViewChild('myinput') myInput: ElementRef;
   step: 1 | 2 = 1;
-  numberOfParticipant: number = 3;
+  numberOfParticipant: number = 5;
   listRole$: Observable<IRole[]>;
   errorMessage: string = '';
 
   constructor(
     private roleService: RoleService,
     private router: Router,
-    public state: StateService
+    public state: StateService,
+    private elemetRef: ElementRef
   ) {
     this.listRole$ = roleService.getListRole();
   }
 
   onNumberOfParticipantChanged(e: any) {
-    if (
-      e.target.value > this.state.listParticipant.length &&
-      e.target.value <= 15
-    ) {
+    this.handleChangeNumberOfParticipant(e.target.value);
+  }
+
+  handleChangeNumberOfParticipant(value) {
+    if (value > this.state.listParticipant.length && value <= 15) {
       let newListParticipant = [];
-      for (var i = this.state.listParticipant.length; i < e.target.value; i++) {
+      for (var i = this.state.listParticipant.length; i < value; i++) {
         let participant = {
           name: `Người chơi thứ ${i + 1}`,
           id: i + 1,
@@ -42,21 +43,46 @@ export class HomeComponent {
       }
       this.state.listParticipant =
         this.state.listParticipant.concat(newListParticipant);
-    } else if (
-      e.target.value < this.state.listParticipant.length &&
-      e.target.value >= 3
-    ) {
-      let temp = this.state.listParticipant.length - e.target.value;
-      this.state.listParticipant.splice(e.target.value, temp + 1);
+    } else if (value < this.state.listParticipant.length && value >= 5) {
+      let temp = this.state.listParticipant.length - value;
+      this.state.listParticipant.splice(value, temp + 1);
     }
   }
 
+  increaseNumber() {
+    if (this.numberOfParticipant < 15) this.numberOfParticipant += 1;
+    this.handleChangeNumberOfParticipant(this.numberOfParticipant);
+  }
+
+  decreaseNumber() {
+    if (this.numberOfParticipant > 5) this.numberOfParticipant -= 1;
+    this.handleChangeNumberOfParticipant(this.numberOfParticipant);
+  }
+
   onInputRoleChanged(e: any, role: any) {
+    this.handleInputRoleChanged(e.target.value, role);
+  }
+
+  handleInputRoleChanged(value: any, role: any) {
     this.handleDistinctRole(role);
-    if (e.target.value > 0) {
-      this.handleAddRole(e.target.value, role);
+    if (value > 0) {
+      this.handleAddRole(value, role);
     } else {
       role.selected = false;
+    }
+  }
+
+  increaseRole(role: any) {
+    if (role.quantity < 3) {
+      role.quantity += 1;
+      this.handleInputRoleChanged(role.quantity, role);
+    }
+  }
+
+  decreaseRole(role: any) {
+    if (role.quantity > 0) {
+      role.quantity -= 1;
+      this.handleInputRoleChanged(role.quantity, role);
     }
   }
 
@@ -68,9 +94,12 @@ export class HomeComponent {
       role.quantity = 0;
       this.handleRemoveRole(role);
     } else {
+      if (role.id === 2 || role.id === 7)
+        this.elemetRef.nativeElement.querySelector(
+          `#role-${role.id}`
+        ).value = 1;
       role.selected = true;
       role.quantity = 1;
-      this.myInput.nativeElement.value = 1;
       this.handleAddRole(1, role);
     }
   }
@@ -100,8 +129,7 @@ export class HomeComponent {
       case 9:
       case 10:
       case 11: {
-        if (value === 1) this.state.listSelectRole.push(role);
-        else return;
+        this.state.listSelectRole.push(role);
         break;
       }
       case 2:
