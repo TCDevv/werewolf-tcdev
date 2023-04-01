@@ -201,11 +201,11 @@
                 scrollbar-width: thin;
                 scrollbar-color: rgb(226, 59, 115) #f5f5f5;
                 &__role {
-                    height: 88px;
                     width: 100%;
                     display: flex;
                     align-items: center;
                     justify-content: space-evenly;
+                    height: 50px;
                     & > img {
                         width: 3rem;
                         border-radius: 50%;
