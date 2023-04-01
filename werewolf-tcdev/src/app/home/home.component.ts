@@ -106,7 +106,7 @@ export class HomeComponent {
 
   handleDistinctRole(role: any) {
     let hasThisRole = this.state.listSelectRole.findIndex((i) => i === role);
-    if (hasThisRole)
+    if (hasThisRole !== -1)
       this.state.listSelectRole = this.state.listSelectRole.filter(
         (i) => i !== role
       );
