@@ -1,0 +1,18 @@
+<div class="container welcome" [class.scale]="state.navigateType === 'welcome'">
+    <div class="title">
+        <h1>MA SÓI</h1>
+    </div>
+    <button routerLink="/home" (click)="startGame()">Chơi ngay</button>
+    <div class="footer">
+        <div class="footer__info">Developed by TCDev</div>
+        <div class="footer__social">
+            <div class="footer__social__github"><a href="https://github.com/TCDevv"><i class="fa fa-github"
+                        aria-hidden="true"></i></a>
+            </div>
+            <div class="footer__social__linkedin">
+                <a href="https://www.linkedin.com/in/thienchuc/"><i class="fa fa-linkedin-square"
+                        aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+</div>

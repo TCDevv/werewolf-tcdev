@@ -52,7 +52,7 @@
             & > .card {
                 width: calc(33.33% - 10px); /* 10px là khoảng cách giữa các phần tử */
                 height: 0;
-                padding-bottom: calc(33.33% + 10px); /* 33.33% = 100% / 3 */
+                padding-bottom: calc(33.33% + 25px); /* 33.33% = 100% / 3 */
                 position: relative;
                 & > * {
                     position: absolute;

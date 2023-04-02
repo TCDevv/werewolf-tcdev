@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CharacterComponent } from './character/character.component';
 import { HomeComponent } from './home/home.component';
 import { SelectRandomComponent } from './select-random/select-random.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
   {
@@ -14,8 +15,12 @@ const routes: Routes = [
     component: SelectRandomComponent,
   },
   {
-    path: '',
+    path: 'home',
     component: HomeComponent,
+  },
+  {
+    path: '',
+    component: WelcomeComponent,
   },
 ];
 

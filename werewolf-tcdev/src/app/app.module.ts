@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { CharacterComponent } from './character/character.component';
 import { HomeComponent } from './home/home.component';
 import { SelectRandomComponent } from './select-random/select-random.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { SelectRandomComponent } from './select-random/select-random.component';
     CharacterComponent,
     HomeComponent,
     SelectRandomComponent,
+    WelcomeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

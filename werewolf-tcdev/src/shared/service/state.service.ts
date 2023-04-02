@@ -7,6 +7,7 @@ import { IRole } from '../models/role.model';
   providedIn: 'root',
 })
 export class StateService {
+  backgroundSound = new Audio('../assets/audio/background_audio.mp3');
   listSelectRole: IRole[] = [];
   listParticipant: IParticipant[] = [
     { name: 'Người chơi thứ 1', id: 1 },
@@ -21,6 +22,7 @@ export class StateService {
     | 'homeToRandom'
     | 'randomToHome'
     | 'randomToCharacter'
-    | 'characterToRandom' = 'default';
+    | 'characterToRandom'
+    | 'welcome' = 'default';
   constructor() {}
 }
