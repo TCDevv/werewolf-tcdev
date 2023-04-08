@@ -19,6 +19,45 @@
         text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
     }
 }
+.image {
+    width: 16rem;
+    & > img {
+        width: 100%;
+        border-radius: 50%;
+        filter: hue-rotate(0deg);
+        animation: changeColor 5s infinite ease, smoke 10s infinite ease-in-out;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.4), 0 0 60px rgba(0, 0, 0, 0.3),
+            0 0 80px rgba(0, 0, 0, 0.2), 0 0 100px rgba(0, 0, 0, 0.1);
+        transition: 0.5s;
+    }
+}
+@keyframes changeColor {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    25% {
+        filter: hue-rotate(90deg);
+    }
+    50% {
+        filter: hue-rotate(180deg);
+    }
+    75% {
+        filter: hue-rotate(270deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+@keyframes smoke {
+    0% {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.4), 0 0 60px rgba(0, 0, 0, 0.3),
+            0 0 80px rgba(0, 0, 0, 0.2), 0 0 100px rgba(0, 0, 0, 0.1);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0), 0 0 40px rgba(0, 0, 0, 0), 0 0 60px rgba(0, 0, 0, 0),
+            0 0 80px rgba(0, 0, 0, 0), 0 0 100px rgba(0, 0, 0, 0);
+    }
+}
 button {
     width: 50%;
     height: 50px;
