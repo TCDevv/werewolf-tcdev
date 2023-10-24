@@ -3,7 +3,7 @@
     top: 2rem;
     left: 2rem;
     & > i {
-        font-size: 1.2rem;
+        font-size: 1.6em;
         color: rgb(226, 59, 115);
         font-weight: bold;
         cursor: pointer;
@@ -33,7 +33,7 @@
             height: 100%;
             border-radius: 50%;
             scale: 0;
-            animation: zoomIn 3s 1s alternate 1;
+            animation: zoomIn 2s alternate 1;
         }
     }
     @media screen and (max-width: 480px) {
@@ -58,7 +58,7 @@
             font-size: 1.2rem;
             font-weight: bold;
             scale: 0;
-            animation: zoomIn 4s alternate 1;
+            animation: zoomIn 2s alternate 1;
         }
     }
     @keyframes zoomIn {

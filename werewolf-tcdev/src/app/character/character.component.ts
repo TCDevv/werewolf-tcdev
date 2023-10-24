@@ -20,7 +20,7 @@ export class CharacterComponent implements OnInit {
     if (zoomElement) {
       setTimeout(() => {
         zoomElement.forEach((i) => i.classList.add('scaled'));
-      }, 4000);
+      }, 2000);
     }
     if (this.state.listCharacter.length === 0) {
       this.router.navigate(['/']);
